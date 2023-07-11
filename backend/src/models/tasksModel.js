@@ -12,7 +12,7 @@ const createTask = async (task) => {
   const query = 'INSERT INTO tasks(title, status, created_at) VALUES (?, ?, ?)';
 
   const [createdTask] = await connection.execute(query, [title, 'pendente', dateUTC]);
-  return {insertId: createdTask.insertId};
+  return { insertId: createdTask.insertId };
 };
 
 const deleteTask = async (id) => {
@@ -22,7 +22,7 @@ const deleteTask = async (id) => {
 
 const updateTask = async (id, task) => {
   const { title, status } = task;
-  
+
   const query = 'UPDATE tasks SET title = ?, status = ? WHERE id = ?';
 
   const [updatedTask] = await connection.execute(query, [title, status, id]);
